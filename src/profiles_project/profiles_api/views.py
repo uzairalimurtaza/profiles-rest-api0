@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.views import Response
 from . import serializers
+from . import models
 
 # Create your views here.
 
@@ -100,3 +101,10 @@ class HelloViewSet(viewsets.ViewSet):
         """Handles getting an object by its ID."""
 
         return Response({'http_method':'DESTROY'})
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """ Handles Creating, Reading and Updating Profiles."""
+
+    serializer_class = serializers.UserProfileSerializer
+
+    queryset = models.UserProfile.objects.all()
